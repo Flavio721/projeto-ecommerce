@@ -1,0 +1,284 @@
+.page { padding-block: var(--space-12); }
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  margin-bottom: var(--space-8);
+}
+
+/* ── Progress ── */
+.progress {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--space-10);
+}
+
+.progressItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 1;
+}
+
+.progressDot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  transition: all var(--transition);
+}
+
+.progressDot.current {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-accent-bg);
+}
+
+.progressDot.done {
+  border-color: var(--color-success);
+  background: var(--color-success);
+  color: var(--color-bg);
+}
+
+.progressLabel {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  transition: color var(--transition);
+}
+
+.progressLabel.activeLabel { color: var(--color-text); }
+
+.progressLine {
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+  margin-inline: var(--space-2);
+  transition: background var(--transition-slow);
+}
+
+.progressLine.doneLine { background: var(--color-success); }
+
+/* ── Layout ── */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+/* ── Card ── */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ── Form ── */
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.field { display: flex; flex-direction: column; gap: var(--space-2); }
+.fullCol { grid-column: 1 / -1; }
+
+.label {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.optional { font-size: 0.65rem; color: var(--color-text-muted); text-transform: none; letter-spacing: 0; }
+
+.input {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  padding: var(--space-3) var(--space-4);
+  font-size: 0.88rem;
+  transition: border-color var(--transition);
+  width: 100%;
+}
+
+.input::placeholder { color: var(--color-text-muted); }
+.input:focus { outline: none; border-color: var(--color-accent); }
+
+/* ── Payment methods ── */
+.methodRow {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.methodBtn {
+  flex: 1;
+  min-width: 110px;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--color-text-soft);
+  text-align: center;
+  transition: all var(--transition);
+}
+
+.methodBtn:hover { border-color: var(--color-text-soft); color: var(--color-text); }
+.methodBtn.methodSelected {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-accent-bg);
+}
+
+/* Pix / Boleto info */
+.pixInfo {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4) var(--space-5);
+  font-size: 0.85rem;
+  color: var(--color-text-soft);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.pixNote { color: var(--color-text-muted); font-size: 0.78rem; }
+
+/* ── Step actions ── */
+.stepActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-6);
+  margin-top: var(--space-2);
+}
+
+.backBtn {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+  transition: color var(--transition);
+}
+.backBtn:hover { color: var(--color-text); }
+
+/* ── Review blocks ── */
+.reviewBlock {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4) var(--space-5);
+}
+
+.reviewLabel {
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.reviewText {
+  font-size: 0.88rem;
+  color: var(--color-text-soft);
+  line-height: 1.6;
+}
+
+/* ── Summary sidebar ── */
+.summary {
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-6));
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.summaryTitle {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.summaryItems { display: flex; flex-direction: column; gap: var(--space-4); }
+
+.summaryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.summaryItemName { font-size: 0.85rem; color: var(--color-text); line-height: 1.3; }
+.summaryItemVariant { font-size: 0.72rem; color: var(--color-text-muted); margin-top: 2px; }
+.summaryItemPrice { font-size: 0.85rem; font-weight: 600; white-space: nowrap; }
+
+.summaryTotals {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-4);
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: var(--color-text-soft);
+}
+
+.discountRow { color: var(--color-success); }
+
+.grandTotal {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .summary { position: static; order: -1; }
+  .progress { overflow-x: auto; }
+}
+
+@media (max-width: 480px) {
+  .formGrid { grid-template-columns: 1fr; }
+  .card { padding: var(--space-5); }
+}

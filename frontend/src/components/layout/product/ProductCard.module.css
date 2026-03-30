@@ -1,0 +1,125 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  cursor: pointer;
+}
+
+/* ── Image ── */
+.imageWrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card:hover .image {
+  transform: scale(1.04);
+}
+
+/* ── Tags ── */
+.tagNew,
+.tagSale {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  z-index: 1;
+}
+
+.tagNew {
+  background: var(--color-surface-2);
+  color: var(--color-text-soft);
+  border: 1px solid var(--color-border);
+}
+
+.tagSale {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  top: calc(var(--space-3) + 28px); /* abaixo do tagNew se ambos presentes */
+}
+
+/* ── Overlay ── */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: var(--space-4);
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+}
+
+.card:hover .overlay {
+  opacity: 1;
+}
+
+.quickView {
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(6px);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border-hover);
+  border-radius: var(--radius-sm);
+}
+
+/* ── Info ── */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.category {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.name {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--color-text);
+  line-height: 1.4;
+  font-family: var(--font-display);
+}
+
+.pricing {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.price,
+.salePrice {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.salePrice { color: var(--color-accent); }
+
+.originalPrice {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}

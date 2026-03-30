@@ -1,0 +1,232 @@
+.page { padding-block: var(--space-12); }
+
+.layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: var(--space-10);
+  align-items: start;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-6));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.userCard {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-accent-bg);
+  border: 1px solid var(--color-accent-dim);
+  color: var(--color-accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.userName { font-size: 0.9rem; font-weight: 600; }
+.userEmail { font-size: 0.75rem; color: var(--color-text-muted); }
+
+.nav { display: flex; flex-direction: column; gap: var(--space-1); }
+
+.navBtn {
+  text-align: left;
+  font-size: 0.85rem;
+  color: var(--color-text-soft);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+}
+
+.navBtn:hover { color: var(--color-text); background: var(--color-surface-2); }
+
+.navBtn.navActive {
+  color: var(--color-text);
+  background: var(--color-surface-2);
+  border-left: 2px solid var(--color-accent);
+}
+
+.logoutBtn {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+  text-align: left;
+  transition: color var(--transition);
+  padding: var(--space-2) var(--space-4);
+}
+.logoutBtn:hover { color: var(--color-error); }
+
+/* ── Main ── */
+.main { min-height: 400px; }
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: var(--space-6);
+}
+
+/* ── Orders ── */
+.orderList { display: flex; flex-direction: column; gap: var(--space-3); }
+
+.orderCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5) var(--space-6);
+  transition: border-color var(--transition);
+}
+
+.orderCard:hover { border-color: var(--color-border-hover); }
+
+.orderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.orderId { font-size: 0.9rem; font-weight: 600; }
+
+.orderStatus {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 99px;
+}
+
+.status_gold  { background: rgba(200,169,126,0.12); color: var(--color-accent); border: 1px solid var(--color-accent-dim); }
+.status_green { background: rgba(90,158,122,0.1);  color: var(--color-success); border: 1px solid rgba(90,158,122,0.3); }
+.status_red   { background: rgba(224,85,85,0.1);   color: var(--color-error);   border: 1px solid rgba(224,85,85,0.3); }
+.status_muted { background: var(--color-surface-2); color: var(--color-text-muted); border: 1px solid var(--color-border); }
+
+.orderMeta {
+  display: flex;
+  gap: var(--space-6);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.orderTotal { color: var(--color-text); font-weight: 600; margin-left: auto; }
+
+/* ── Profile form ── */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.field { display: flex; flex-direction: column; gap: var(--space-2); }
+.fullCol { grid-column: 1 / -1; }
+
+.label {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.input {
+  width: 100%;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  padding: var(--space-3) var(--space-4);
+  font-size: 0.88rem;
+  transition: border-color var(--transition);
+}
+.input::placeholder { color: var(--color-text-muted); }
+.input:focus { outline: none; border-color: var(--color-accent); }
+
+/* ── Addresses ── */
+.addressList { display: flex; flex-direction: column; gap: var(--space-4); }
+
+.addressCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.addressInfo { display: flex; flex-direction: column; gap: var(--space-2); }
+
+.defaultBadge {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent-dim);
+  background: var(--color-accent-bg);
+  padding: 2px 8px;
+  border-radius: 99px;
+  width: fit-content;
+}
+
+.addressText { font-size: 0.88rem; color: var(--color-text); }
+.addressCity { font-size: 0.78rem; color: var(--color-text-muted); }
+
+.addressActions { display: flex; gap: var(--space-3); flex-shrink: 0; }
+
+.textBtn {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  transition: color var(--transition);
+}
+.textBtn:hover { color: var(--color-text); }
+.deleteBtn:hover { color: var(--color-error); }
+
+.addAddressBtn {
+  font-size: 0.78rem;
+  color: var(--color-accent);
+  border: 1px dashed var(--color-border-hover);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  text-align: center;
+  transition: all var(--transition);
+  letter-spacing: 0.06em;
+}
+.addAddressBtn:hover { border-color: var(--color-accent); background: var(--color-accent-bg); }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+  .formGrid { grid-template-columns: 1fr; }
+}
