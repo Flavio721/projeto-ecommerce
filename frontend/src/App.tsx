@@ -1,18 +1,18 @@
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import { Layout } from "./components/layout/Layout";
-// import { Home } from "./pages/Home";
-// import { ProductList } from "./pages/ProductList";
-// import { ProductDetail } from "./pages/ProductDetail";
-// import { Cart } from "./pages/Cart";
-// import { Checkout } from "./pages/Checkout";
-// import { OrderConfirmation } from "./pages/OrderConfirmation";
-// import { Account } from "./pages/Account";
-// import { Login } from "./pages/Login";
-// import { Register } from "./pages/Register";
-// import { AdminLayout } from "./components/layout/AdminLayout";
-// import { AdminDashboard } from "./pages/admin/AdminDashboard";
-// import { AdminProducts } from "./pages/admin/AdminProducts";
-// import { AdminOrders } from "./pages/admin/AdminOrders";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Layout } from "./components/layout/Layout";
+import { Home } from "./pages/Home";
+import { ProductList } from "./pages/ProductList";
+import { ProductDetail } from "./pages/ProductDetail";
+import { Cart } from "./pages/Cart";
+import { Checkout } from "./pages/Checkout";
+import { OrderConfirmation } from "./pages/OrderConfirmation";
+import { Account } from "./pages/Account";
+import { Login } from "./pages/Login";
+import { Register } from "./pages/Register";
+import { AdminLayout } from "./components/layout/AdminLayout";
+import { AdminDashboard } from "./pages/admin/AdminDashboard";
+import { AdminProducts } from "./pages/admin/AdminProducts";
+import { AdminOrders } from "./pages/admin/AdminOrders";
 
 export default function App() {
   return (

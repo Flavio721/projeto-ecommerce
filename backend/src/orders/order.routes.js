@@ -14,3 +14,5 @@ router.get("/:id"
 router.delete("/:id/cancel"
     // Função e middlewares do delete de um pedido
 )
+
+export default router;
