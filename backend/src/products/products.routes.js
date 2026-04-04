@@ -1,13 +1,23 @@
 
 import express from "express";
+import { getProductBySlug, listProducts } from "./products.controller";
 
 const router = express.Router();
 
-router.get("/products" 
-    // Função e middlewares do get de products
+const searchRateLimit = rateLimit({
+    windowMs: 1 * 60 * 1000,
+    max: 1000,
+    message: { error: "Muitas buscas. Tente novamente em 1 minuto" },
+    standardHeaders: true,
+    legacyHeaders: false
+});
+router.get("/products",
+    searchRateLimit,
+    listProducts
 )
-router.get("/products/:slug"
-    // Função e middlewares do slug de produto
+router.get("/products/:slug",
+    searchRateLimit,
+    getProductBySlug
 )
 
 export default router;
