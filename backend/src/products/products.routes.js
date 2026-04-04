@@ -1,6 +1,7 @@
 
 import express from "express";
 import { getProductBySlug, listProducts } from "./products.controller";
+import rateLimit from "express-rate-limit";
 
 const router = express.Router();
 
@@ -11,7 +12,7 @@ const searchRateLimit = rateLimit({
     standardHeaders: true,
     legacyHeaders: false
 });
-router.get("/products",
+router.get("/products/:category/:size/:color",
     searchRateLimit,
     listProducts
 )

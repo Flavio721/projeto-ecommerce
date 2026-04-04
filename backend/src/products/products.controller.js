@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 export async function listProducts(req, res, next){
     try{
-        const { category, size, color } = req.quey;
+        const { category, size, color } = req.params;
 
         const categorySelected = await prisma.category.findFirst({
             where: { slug: category }
