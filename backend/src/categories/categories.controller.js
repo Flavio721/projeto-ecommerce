@@ -5,7 +5,6 @@ const prisma = new PrismaClient();
 
 export async function listCategorie(req, res, next) {
     try{
-
         const categories = await prisma.category.findMany({
             where: {
                 active: true,
