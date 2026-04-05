@@ -1,18 +1,24 @@
 import express from "express";
+import { apiLimiter, searchLimiter } from "../configs/rateLimit.js";
+import { cancelOrder, createOrder, getOrder, listOrders,  } from "./order.controller.js";
 
 const router = express.Router()
 
-router.post("/create"
-    // Função e middlewares do post do pedido
+router.post("/create",
+    apiLimiter,
+    createOrder
 )
-router.get("/"
-    // Função e middlewares do get dos pedido
+router.get("/",
+    searchLimiter,
+    listOrders
 )
-router.get("/:id"
-    // Função e middlewares do get de um pedido
+router.get("/:id",
+    searchLimiter,
+    getOrder
 )
-router.delete("/:id/cancel"
-    // Função e middlewares do delete de um pedido
+router.delete("/:id/cancel",
+    apiLimiter,
+    cancelOrder
 )
 
 export default router;
