@@ -1,24 +1,16 @@
 import express from 'express';
-import rateLimit from 'express-rate-limit';
-import { getCategory, listCategorie } from './categories.controller';
+import { getCategory, listCategorie } from './categories.controller.js';
+import { searchLimiter } from '../configs/rateLimit.js';
 
 const router = express.Router();
 
-const searchRateLimit = rateLimit({
-    windowMs: 1 * 60 * 1000,
-    max: 1000,
-    message: { error: "Muitas buscas. Tente novamente em 1 minuto" },
-    standardHeaders: true,
-    legacyHeaders: false
-});
-
 router.get("/",
-    searchRateLimit,
+    searchLimiter,
     listCategorie
 )
 
 router.get("/:slug",
-    searchRateLimit,
+    searchLimiter,
     getCategory
 )
 

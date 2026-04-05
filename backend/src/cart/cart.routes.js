@@ -1,18 +1,24 @@
 import express from "express";
+import { apiLimiter, searchLimiter } from "../configs/rateLimit.js";
+import { addItem, getCart, removeItem, updateItem } from "./cart.controller.js";
 
 const router = express.Router();
 
-router.get("/"
-    // Função e middlewares do get de carrinho
+router.get("/",
+    searchLimiter,
+    getCart
 )
-router.post("/items"
-    // Função e middlewares do post do carrinho
+router.post("/add-items",
+    apiLimiter,
+    addItem
 )
-router.patch("/items/:variantId"
-    // Função e middlewares do patch do carrinho
+router.patch("/items/:variantId",
+    apiLimiter,
+    updateItem
 )
-router.delete("/items/:variantId/cancel"
-    // Função e middlewares do patch do carrinho
+router.delete("/items/:variantId/cancel",
+    apiLimiter,
+    removeItem
 )
 
 export default router;
