@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { AppError } from "../lib/AppError.js";
 import { calculateShipping } from "../utils/calculate.js";
+import { validateCoupon } from "../lib/validateCoupon.js";
 
 const prisma = new PrismaClient();
 
@@ -51,31 +52,9 @@ export async function createOrder(req, res, next) {
     let couponId = null;
 
     if (couponCode) {
-      const coupon = await prisma.coupon.findUnique({
-        where: { code: couponCode },
-      });
-
-      if (!coupon || !coupon.active) {
-        throw new AppError("Cupom inválido", 400);
-      }
-      if (coupon.expiresAt && coupon.expiresAt < new Date()) {
-        throw new AppError("Cupom expirado", 400);
-      }
-      if (coupon.maxUses && coupon.usedCount >= coupon.maxUses) {
-        throw new AppError("Cupom esgotado", 400);
-      }
-      if (coupon.minOrderValue && subtotal < coupon.minOrderValue) {
-        throw new AppError(
-          `Pedido mínimo de R$${coupon.minOrderValue} para este cupom`,
-          400
-        );
-      }
-
-      couponId = coupon.id;
-      discount =
-        coupon.discountType === "PERCENT"
-          ? subtotal * (coupon.discountValue / 100)
-          : coupon.discountValue;
+        const { coupon, discount: calculatedDiscount } = await validateCoupon(couponCode, subtotal);
+        discount = calculatedDiscount;
+        couponId = coupon.id;
     }
 
     const shipping = calculateShipping(subtotal);
