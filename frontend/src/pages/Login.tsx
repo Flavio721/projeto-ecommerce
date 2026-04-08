@@ -2,22 +2,33 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../components/layout/ui/Button";
 import styles from "./Auth.module.css";
+import api from "../services/api";
 
 export function Login() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const [email, setEmail]       = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [loading, setLoading]   = useState(false);
+  const [error, setError]       = useState<string | null>(null);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setError("");
+    setError(null);
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    // TODO: chamar POST /auth/login
-    setLoading(false);
-    navigate("/");
+
+    try {
+      // Usa os states diretamente — já temos os valores controlados
+      const { data } = await api.post("/auth/login", { email, password });
+
+      localStorage.setItem("accessToken", data.accessToken);
+      navigate("/");
+    } catch (err: unknown) {
+      const message =
+        err instanceof Error ? err.message : "Erro ao fazer login";
+      setError(message);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
